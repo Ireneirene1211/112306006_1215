@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Number Comparison</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            height: 100vh;
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+
+        #result {
+            margin-top: 20px;
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body>
+
+<script>
+    // Declare variables in the global scope
+    let firstInput, secondInput;
+
+    // Function to get user input through a pop-up window
+    function getUserInput(promptText) {
+        return prompt(promptText);
+    }
+
+    // Function to compare two numbers and update the page accordingly
+    function compareNumbers() {
+        // Get user input for the first and second numbers
+        firstInput = parseFloat(getUserInput("Enter the first number:"));
+        secondInput = parseFloat(getUserInput("Enter the second number:"));
+
+        // Check conditions and update page accordingly
+        if (isNaN(firstInput) || isNaN(secondInput)) {
+            alert("Please enter valid numbers.");
+        } else if (firstInput > secondInput) {
+            document.body.style.backgroundColor = 'lightblue';
+            document.getElementById('result').innerText = "firstInput > secondInput";
+        } else if (secondInput > firstInput) {
+            document.body.style.backgroundColor = 'orange';
+            document.getElementById('result').innerText = "secondInput > firstInput";
+        } else {
+            document.body.style.backgroundColor = 'lightyellow';
+            document.getElementById('result').innerText = "secondInput == firstInput";
+        }
+    }
+</script>
+
+<button onclick="alert(`First Input: ${firstInput}`)">Show First Input</button>
+<button onclick="alert(`Second Input: ${secondInput}`)">Show Second Input</button>
+
+<div id="result"></div>
+
+<script>
+    // Call the function to compare numbers when the page loads
+    compareNumbers();
+</script>
+
+</body>
+</html>
